@@ -131,10 +131,9 @@ DIE_OPTIONS = {
 @commands('eote', 'ed')
 def eote(bot, trigger):
     """Create a dictionary of die results for an Edge of the Empire dice roll."""
-    die_dict = Counter({'Success': 0})
+    die_dict = Counter({})
     for letter in trigger.group(2):
         for result in random.choice(DIE_OPTIONS[letter]):
-            print(result)
             die_dict.update(Counter(result))
     # Return dict without 0 values
     die_dict = dict_print(trigger.nick, {k: v for k, v in die_dict.items() if v})
